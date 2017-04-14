@@ -51,7 +51,7 @@ public class ChatTest {
     Thread.sleep(1000);
 
     ChatBot john = new ChatBot(startClient(),
-        line("Enter name: ", "john"),
+        line("Enter name:", "john"),
         line("Connecting..."),
         line("Connected, you can type your messages now", "i am first!"),
         line("jim has joined"),
@@ -63,7 +63,7 @@ public class ChatTest {
     );
 
     ChatBot jim = new ChatBot(startClient(),
-        line("Enter name: ", "jim"),
+        line("Enter name:", "jim"),
         line("Connecting..."),
         line("Connected, you can type your messages now", "i am second!"),
         line("sally has joined"),
@@ -76,7 +76,7 @@ public class ChatTest {
     );
 
     ChatBot sally = new ChatBot(startClient(),
-        line("Enter name: ", "sally"),
+        line("Enter name:", "sally"),
         line("Connecting..."),
         line("Connected, you can type your messages now", "i am last!"),
         line("john: hi sally!", "hi there!", "let's get outta here!"),
@@ -123,7 +123,7 @@ public class ChatTest {
     Thread.sleep(1000);
 
     ChatBot john = new ChatBot(startClient(),
-        line("Enter name: ", "john"),
+        line("Enter name:", "john"),
         line("Connecting..."),
         line("Connected, you can type your messages now"),
         line("jim has joined"),
@@ -131,14 +131,14 @@ public class ChatTest {
     );
 
     ChatBot jim = new ChatBot(startClient(),
-        line("Enter name: ", "jim"),
+        line("Enter name:", "jim"),
         line("Connecting..."),
         line("Connected, you can type your messages now"),
         line("sally has joined")
     );
 
     ChatBot sally = new ChatBot(startClient(),
-        line("Enter name: ", "sally"),
+        line("Enter name:", "sally"),
         line("Connecting..."),
         line("Connected, you can type your messages now")
     );
