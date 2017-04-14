@@ -8,14 +8,11 @@ public class ChatBot implements Runnable {
 
   private final Process process;
   private final Dialogue dialogue;
+  private PrintStream out;
 
   public ChatBot(Process process, Dialogue.Line... dialogueLines) {
     this.process = process;
     this.dialogue = new Dialogue(dialogueLines);
-  }
-
-  public Process getProcess() {
-    return process;
   }
 
   public Dialogue getDialogue() {
@@ -27,8 +24,14 @@ public class ChatBot implements Runnable {
     Scanner in = new Scanner(process.getInputStream());
     PrintStream out = new PrintStream(new BufferedOutputStream(process.getOutputStream()), true);
 
+    this.out = out;
+
     while (in.hasNextLine()) {
       dialogue.replyTo(in.nextLine()).forEach(out::println);
     }
+  }
+
+  public void quit() {
+    out.println("/q");
   }
 }

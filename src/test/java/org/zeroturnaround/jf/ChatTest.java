@@ -2,6 +2,7 @@ package org.zeroturnaround.jf;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.zeroturnaround.jf.Dialogue.line;
+import static org.zeroturnaround.process.ProcessUtil.destroyGracefullyOrForcefullyAndWait;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -111,7 +112,7 @@ public class ChatTest {
         .overridingErrorMessage("sally's dialogue did not complete as expected!")
         .isTrue();
 
-    Processes.newPidProcess(server).destroyGracefully();
+    destroyGracefullyOrForcefullyAndWait(Processes.newPidProcess(server));
   }
 
   @Test
@@ -134,35 +135,35 @@ public class ChatTest {
         line("Enter name:", "jim"),
         line("Connecting..."),
         line("Connected, you can type your messages now"),
-        line("sally has joined")
+        line("sally has joined"),
+        line("john has left")
     );
 
     ChatBot sally = new ChatBot(startClient(),
         line("Enter name:", "sally"),
         line("Connecting..."),
-        line("Connected, you can type your messages now")
+        line("Connected, you can type your messages now"),
+        line("john has left"),
+        line("jim has left")
     );
 
-    Future<?> johnFuture = executor.submit(john);
+    executor.submit(john);
+    executor.submit(jim);
+    executor.submit(sally);
 
     Thread.sleep(500);
-
-    Future<?> jimFuture = executor.submit(jim);
-
-    Thread.sleep(500);
-
-    Future<?> sallyFuture = executor.submit(sally);
-
-    Thread.sleep(500);
-
     assertThat(getClientList()).containsOnly("john", "jim", "sally");
 
-    Processes.newPidProcess(john.getProcess()).destroyForcefully();
-    Processes.newPidProcess(jim.getProcess()).destroyForcefully();
-    Processes.newPidProcess(sally.getProcess()).destroyForcefully();
+    john.quit();
+    Thread.sleep(200);
+    assertThat(getClientList()).containsOnly("jim", "sally");
 
-    Thread.sleep(500);
+    jim.quit();
+    Thread.sleep(200);
+    assertThat(getClientList()).containsOnly("sally");
 
+    sally.quit();
+    Thread.sleep(200);
     assertThat(getClientList()).containsOnly("");
   }
 
