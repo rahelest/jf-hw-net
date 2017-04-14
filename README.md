@@ -69,8 +69,8 @@ Your Student Book Number (matrikli number, e.g. B12345):
 B12345
 Comment:
 Java IO
-      [zip] Building zip: /Users/jane/workspace/jf-hw-money-transfers/target/jf-homework13-B12345.zip
-   [delete] Deleting: /Users/jane/workspace/jf-hw-money-transfers/homework.properties
+      [zip] Building zip: /Users/jane/workspace/jf-hw-net/target/jf-homework13-B12345.zip
+   [delete] Deleting: /Users/jane/workspace/jf-hw-net/homework.properties
 [INFO] Executed tasks
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
