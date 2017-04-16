@@ -8,7 +8,7 @@ public class ChatBot implements Runnable {
 
   private final Process process;
   private final Dialogue dialogue;
-  private PrintStream out;
+  private volatile PrintStream out;
 
   public ChatBot(Process process, Dialogue.Line... dialogueLines) {
     this.process = process;

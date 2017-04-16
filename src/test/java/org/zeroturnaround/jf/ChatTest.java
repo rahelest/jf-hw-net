@@ -21,7 +21,10 @@ import org.junit.Test;
 import org.zeroturnaround.process.Processes;
 
 /**
- * NB! Test expects the latest version of your compiled classes to be in target/classes
+ * NB!
+ * Test expects the latest version of your compiled classes to be in "target/classes"
+ * If you're launching tests from an IDE,
+ * then make sure that it writes compiled classes to "target/classes" and not to other places like "bin"
  */
 public class ChatTest {
 
@@ -147,9 +150,9 @@ public class ChatTest {
         line("jim has left")
     );
 
-    executor.submit(john);
-    executor.submit(jim);
-    executor.submit(sally);
+    executor.execute(john);
+    executor.execute(jim);
+    executor.execute(sally);
 
     Thread.sleep(500);
     assertThat(getClientList()).containsOnly("john", "jim", "sally");

@@ -51,7 +51,6 @@ public class Dialogue {
       return line.replies;
     }
 
-    completedAsExpected = false;
     throw new IllegalStateException(String.format("%s expected to hear \"%s\", instead heard \"%s\"", name, line.phrase, phrase));
   }
 
