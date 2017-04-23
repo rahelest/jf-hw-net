@@ -19,8 +19,9 @@ Requirements
     * just a basic list, one name per line
     * return an empty line (`"\n"`) if there are 0 clients
 7. The server must be thread-safe
-8. Tests must pass
-9. You are allowed to use only the standard Java library
+8. Resources must be properly closed and released (i.e. nothing should be referencing them so that they could be garbage collected)
+9. Tests must pass
+10. You are allowed to use only the standard Java library
 
 Various tips
 -----------------------

@@ -150,8 +150,14 @@ public class ChatTest {
         line("jim has left")
     );
 
+    assertThat(getClientList()).containsOnly("");
+
     executor.execute(john);
+
+    Thread.sleep(500);
     executor.execute(jim);
+
+    Thread.sleep(500);
     executor.execute(sally);
 
     Thread.sleep(500);
