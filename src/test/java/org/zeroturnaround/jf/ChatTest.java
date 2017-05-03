@@ -174,6 +174,8 @@ public class ChatTest {
     sally.quit();
     Thread.sleep(200);
     assertThat(getClientList()).containsOnly("");
+
+    destroyGracefullyOrForcefullyAndWait(Processes.newPidProcess(server));
   }
 
   private List<String> getClientList() throws IOException {
