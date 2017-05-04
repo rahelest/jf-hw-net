@@ -180,7 +180,7 @@ public class ChatTest {
   private List<String> getClientList() throws IOException {
     List<String> list = new ArrayList<>();
 
-    try (BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("http://localhost:8080").openConnection().getInputStream()))) {
+    try (BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("http://localhost:8080").openStream()))) {
       String line;
 
       while ((line = reader.readLine()) != null) {
