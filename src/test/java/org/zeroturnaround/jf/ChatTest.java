@@ -7,9 +7,8 @@ import static org.zeroturnaround.process.ProcessUtil.destroyGracefullyOrForceful
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.channels.Channels;
-import java.nio.channels.SocketChannel;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -181,8 +180,7 @@ public class ChatTest {
   private List<String> getClientList() throws IOException {
     List<String> list = new ArrayList<>();
 
-    try (SocketChannel socket = SocketChannel.open(new InetSocketAddress(8080));
-         BufferedReader reader = new BufferedReader(Channels.newReader(socket, "UTF-8"))) {
+    try (BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("http://localhost:8080").openConnection().getInputStream()))) {
       String line;
 
       while ((line = reader.readLine()) != null) {

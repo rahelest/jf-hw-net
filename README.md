@@ -15,13 +15,14 @@ Requirements
 4. Whenever the server receives a message from a client, it must prefix the message with the name of the client and send this prefixed message to all **other** connected clients
 5. The server must also send **X has joined** and **X has left** messages to all clients
     * a client joins when he connects, and leaves when he disconnects
-6. The server must have an endpoint (on port 8080) that returns the names of all currently connected clients
+6. The server must have an HTTP endpoint (on port 8080) that returns the names of all currently connected clients
     * just a basic list, one name per line
     * return an empty line (`"\n"`) if there are 0 clients
+    * use Jetty
 7. The server must be thread-safe
 8. Resources must be properly closed and released (i.e. nothing should be referencing them so that they could be garbage collected)
 9. Tests must pass
-10. You are allowed to use only the standard Java library
+10. You are allowed to use only the standard Java library + Jetty
 
 Various tips
 -----------------------

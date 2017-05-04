@@ -16,6 +16,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>9.4.3.v20170317</version>
+    </dependency>
+    <dependency>
       <groupId>org.zeroturnaround</groupId>
       <artifactId>zt-process-killer</artifactId>
       <version>1.6</version>
